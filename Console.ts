@@ -1,34 +1,39 @@
 const { ipcMain, BrowserWindow } = require("electron");
 const { EventEmitter } = require("stream");
 
-class ConsoleApplet
+class ConsoleApplet extends EventEmitter
 {
-	electron = {};
+	electron = {
+		window : new BrowserWindow({
+			show : false,
+			titleBarStyle : "hidden",
+			title : `Personal Console`,
+			fullscreen : true,
+			kiosk : true,
+			transparent : true,
+			webPreferences: {
+				nodeIntegration: true,
+				contextIsolation: false
+			}
+		})
+	};
 
 	constructor ()
 	{
-		this.electron = {
-			window : new BrowserWindow({
-				show : false,
-				titleBarStyle : "hidden",
-				skipTaskbar : false,
-				title : `Personal Console`,
-				webPreferences: {
-					nodeIntegration: true,
-					contextIsolation: false
-				}
-			})
-		};
+		super();
+		this.electron.window.loadFile("Interface/index.html");
+
+		this.emit('ready');
 	}
 	
 	show()
 	{
-
+		this.electron.window.show();
 	}
 
 	hide()
 	{
-
+		this.electron.window.hide();
 	}
 }
 

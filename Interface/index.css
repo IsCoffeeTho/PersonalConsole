@@ -1,0 +1,23 @@
+:root {
+	--background-color : #0d1117;
+	--foreground-color : #fff;
+}
+
+body
+{
+	background-color : var(--background-color);
+	color : var(--foreground-color);
+	cursor : none;
+	font-family : sans-serif;
+}
+
+.cwyl
+{
+	position : absolute;
+	bottom : 10px;
+	left : 50%;
+	transform : translate(-50%, 0);
+	font-family: monospace;
+	font-size: 15px;
+	font-weight: bold;
+}

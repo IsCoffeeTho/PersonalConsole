@@ -4,10 +4,8 @@ const { EventEmitter } = require("stream");
 function generateRandom(length=32)
 {
 	var s = "";
-	for (var i = 0; i < 32; i++)
-	{
-		s += "0123456789ABCDEF"[Math.floor(Math.random()*16)]
-	}
+	for (var i = 0; i < length; i++)
+	s += "0123456789ABCDEF"[Math.floor(Math.random()*16)];
 	return s;
 }
 

@@ -6,22 +6,21 @@ const {ConsoleApplet} = require("./Console.ts");
 
 app.on('ready', () => {
 	const applet = new ConsoleApplet();
-	const ce = new ControllerEngine();
-	ce.once('ready', () => {
+	const engine = new ControllerEngine();
+	engine.once('ready', () => {
 		console.clear();
 		Logger.Info("Controller Engine started.");
+
+		engine.on('controller', (controller) => {
+			controller.haptic.tick();
+		});
 	});
 
-	ce.on('controller', (controller) => {
-		Logger.Info(`Controller ${controller.player} connected.`);
-		controller.haptic.tick();
-
-		controller.on('Home', () => {
-			
-		})
-
-		controller.on(`err`, (err) => {Logger.Error(`PersonalConsole.Engine.Controller.${err.code}: ${err.message}`)});
+	applet.on('ready', () => {
+		applet.show();
 	});
 
-	ce.on('err', (err) => {Logger.Error(`PersonalConsole.Engine.${err.code}: ${err.message}`)});
+	engine.on('err', (err) => {Logger.Error(`PersonalConsole.Engine.${err.code}: ${err.message}`)});
+
+	applet.on('err', (err) => {Logger.Error(`PersonalConsole.Applet.${err.code}: ${err.message}`)})
 });

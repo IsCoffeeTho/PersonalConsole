@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "electron": "^19.0.5"
+    "electron": "^19.0.6"
   },
   "name": "personalconsole",
   "description": "Personal Console is an application to turn your computer into a fully functioning console to play your favourite games loaded with much more feaatures to make sure you have control.",
@@ -35,7 +35,7 @@
     "global-agent": "^3.0.0",
     "global-tunnel-ng": "^2.7.1",
     "globalthis": "^1.0.3",
-    "got": "^9.6.0",
+    "got": "^12.1.0",
     "graceful-fs": "^4.2.10",
     "has": "^1.0.3",
     "has-property-descriptors": "^1.0.0",
